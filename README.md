@@ -25,6 +25,45 @@
 *もし、自身の音声で試したい場合はページで録音も可能にしています。
 保存などは外部にしていないので大丈夫だと思います。*
 
+## 環境構築メモ
+python version => 3.7
+
+学習したモデルを `exp_train_large/` に配置
+
+**学習したモデルの公開はライセンス次第**
+
+ローカル起動の場合
+```shell
+export PORT=2626
+export FLASK_APP="server.py"
+flask run --host=0.0.0.0 --port=$PORT --with-threads > stdout.log 2> stderr.log
+```
+[ここ](http://localhost:2626)にアクセスして確認
+
+## リリースメモ
+```shell
+# イメージをローカルで確認
+docker build -t asr .
+docker run -d --rm --env PORT=2626 -p 2626:2626 -it asr
+
+# poetry -> requirements.txt
+poetry export --without-hashes -f requirements.txt > requirements.txt
+
+# release
+export PRJ=< your project >
+export IMG=asr-demo
+gcloud builds submit --tag asia.gcr.io/$PRJ/$IMG --timeout 1h
+
+gcloud run deploy asr-demo \
+            --image asia.gcr.io/$PRJ/$IMG \
+            --region asia-northeast1 \
+            --max-instances=1 \
+            --min-instances=0 \
+            --platform managed \
+            --set-env-vars "FLASK_URL= <your URL>"
+```
+
+
 ## モデル
 - ESRNet をベースにしている(End-to-End)
     - CTC loss
@@ -33,10 +72,12 @@
 - データは JUST で事前学習を行った
     - ４時間ほどの軽い学習
 
-Lossの推移
+- Lossの推移
+
 ![Loss](sample/loss.png)
 
-文字列認識率推移
+- 文字列認識率推移
+
 ![認識率推移](sample/error.png)
 
 
