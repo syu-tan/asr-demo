@@ -87,6 +87,9 @@ gcloud run deploy asr-demo \
 - ノイズに強くする
 - 録音周期(Hz)にも適応したい
 
+## 注意
+インプレス社のコードに従い、本ソースコードは、MIT ライセンスのもとで公開されています。
+
 
 ### 参考知識
 - JUST dataset: https://www.jstage.jst.go.jp/article/ast/41/5/41_E1950/_article/-char/ja/
