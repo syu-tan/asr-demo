@@ -64,7 +64,7 @@ gcloud run deploy asr-demo \
 ```
 
 
-## モデル
+## Model
 - ESRNet をベースにしている(End-to-End)
     - CTC loss
     - attention
@@ -87,11 +87,8 @@ gcloud run deploy asr-demo \
 - ノイズに強くする
 - 録音周期(Hz)にも適応したい
 
-## 注意
-インプレス社のコードに従い、本ソースコードは、MIT ライセンスのもとで公開されています。
 
-
-### 参考知識
+## Citation (easy note) 
 - JUST dataset: https://www.jstage.jst.go.jp/article/ast/41/5/41_E1950/_article/-char/ja/
 - 人間の鼓膜の音源分離 : https://asa.scitation.org/doi/10.1121/1.1915893
 - 機械音文献 : https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-associa[…]p-xviii-568-isbn-0201165201/9D7DFF2C6517511ACFC014191A68A959
@@ -117,8 +114,18 @@ gcloud run deploy asr-demo \
 - conformer: https://www.isca-speech.org/archive/Interspeech_2020/abstracts/3015.html
 - wav2vec: https://proceedings.neurips.cc/paper/2020/file/92d1e1eb1cd6f9fba3227870bb6d7f07-Paper.pdf
 
-### 文献
+
+## Caution
+インプレス社のコードに従い、本ソースコードは、MIT ライセンスのもとで公開されています。
+
+## License
+Copyright (c) 2021 Ryoichi Takashima
+Released under the MIT license
+[LISENCE](https://github.com/ry-takashima/python_asr/blob/main/LICENSE)
+
+## Book
 - Pythonで学ぶ音声認識 機械学習実践シリーズ (著書: 高島 遼一)
+
 
 
 
